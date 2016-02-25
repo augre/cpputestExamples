@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/medphys/exampleCode/cmake-cpputest/src/Tutorial/tutorial.cxx
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+

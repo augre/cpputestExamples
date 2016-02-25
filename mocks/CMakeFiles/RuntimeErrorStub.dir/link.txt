@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/libRuntimeErrorStub.a  CMakeFiles/RuntimeErrorStub.dir/RuntimeErrorStub.c.o
+/usr/bin/ranlib ../lib/libRuntimeErrorStub.a

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/medphys/exampleCode/cmake-cpputest/src/LedDriver/LedDriver.c
+LedDriver.h
+/home/medphys/exampleCode/cmake-cpputest/src/LedDriver/LedDriver.h
+RuntimeError.h
+/home/medphys/exampleCode/cmake-cpputest/src/LedDriver/RuntimeError.h
+
+src/../include/LedDriver/LedDriver.h
+stdint.h
+-
+
+src/../include/RuntimeError.h
+

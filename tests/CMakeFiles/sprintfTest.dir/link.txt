@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/libsprintfTest.a  CMakeFiles/sprintfTest.dir/sprintfExample/sprintfTest.cpp.o
+/usr/bin/ranlib ../lib/libsprintfTest.a
