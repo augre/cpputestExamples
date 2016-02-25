@@ -22,20 +22,21 @@ TEST_GROUP(sprintf)
     {
     }
 
-    void expect(const char * s)
-    {
-        expected = s;
-    }
-    void given(int charsWritten)
-    {
-        LONGS_EQUAL(strlen(expected), charsWritten);
-        STRCMP_EQUAL(expected, output);
-        BYTES_EQUAL(0xaa, output[strlen(expected) + 1]);
-    }
 };
 
 TEST(sprintf, NoFormatOperations)
 {
-    expect("hey");
-    given(sprintf(output, "hey"));
+	char output[5];
+        LONGS_EQUAL(3, sprintf(output, "hey"));
+        STRCMP_EQUAL("hey", output);
+}
+
+
+
+TEST(sprintf, memoryTestAtEnd)
+{
+	char output[20];
+        memset(output, 0x01, sizeof output);
+        LONGS_EQUAL(3, sprintf(output, "hey"));
+	BYTES_EQUAL(0x01, output[4]);
 }
