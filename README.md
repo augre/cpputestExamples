@@ -24,7 +24,7 @@ $ make
 $ cd ../examples
 $ make
 
-4. It will likely complain about not finding certain ../lib/lib*.a files
+4. It will likely complain about not finding certain ../lib/libxx.a files
 Please find these files and mkdir ../lib and cp pat/to/lib_found_file.a ../lib
 
 5. Now set to $CPPUTEST_HOME to where the the lib is for example 
