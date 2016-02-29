@@ -22,3 +22,6 @@ add_library(sprintfTest ./sprintfExample/sprintfTest.cpp)
 
 add_executable(RunAllTests RunAllTests.cpp)
 target_link_libraries(RunAllTests imp_cpputest LedDriverTest LedDriver sprintfTest RuntimeErrorStub)
+
+
+add_custom_command( TARGET RunAllTests COMMAND cd ../bin && ./RunAllTests POST_BUILD)
