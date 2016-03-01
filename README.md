@@ -37,6 +37,5 @@ $ cd cpputestExamples <br>
 $ mkdir build && cd build <br> 
 $ cmake .. <br>
 $ make <br>
-$ cd bin <br>
 
-$ ./RunAllTests<br>
+Now make also runs the tests.
