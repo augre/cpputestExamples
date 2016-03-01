@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/RunAllTests.dir/RunAllTests.cpp.o  -o ../bin/RunAllTests -rdynamic /home/medphys/bin/cpputest-3.7dev//lib/libCppUTest.a ../lib/libLedDriverTest.a ../lib/libLedDriver.a ../lib/libsprintfTest.a -lsprintfExample ../lib/libRuntimeErrorStub.a 

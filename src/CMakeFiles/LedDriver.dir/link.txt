@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../lib/libLedDriver.a  CMakeFiles/LedDriver.dir/LedDriver/LedDriver.c.o
-/usr/bin/ranlib ../lib/libLedDriver.a
