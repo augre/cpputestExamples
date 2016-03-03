@@ -41,9 +41,40 @@ enum {
 ///
 void LedDriver_Create(uint16_t * address) 
 {
-  ledsAddress = address;
-  ledsImage = ALL_LEDS_OFF;
-  *ledsAddress = ledsImage; 
+  ledsAddress=address;
+  *address=ALL_LEDS_OFF;
 }
 
+static int checkBounds(uint16_t ledNumber)
+{
+  if(ledNumber < 1 || ledNumber > 16)
+  {
+    RUNTIME_ERROR("out of bounds", ledNumber);
+    return 1;
+  }
+  return 0;
+}
 
+static uint16_t convertLedNumToBit(uint16_t ledNumber)
+{
+  return 1 << (ledNumber - 1);
+}
+
+void LedDriver_TurnOn(uint16_t ledNumber)
+{
+  if(checkBounds(ledNumber))
+    return;
+  ledsImage=convertLedNumToBit(ledNumber);
+  *ledsAddress|=ledsImage;
+}
+void LedDriver_TurnOff(uint16_t ledNumber)
+{
+  if(checkBounds(ledNumber))
+    return;
+  ledsImage=convertLedNumToBit(ledNumber);
+  *ledsAddress&=~ledsImage;
+}
+void LedDriver_TurnAllOn()
+{
+  *ledsAddress=ALL_LEDS_ON;
+}

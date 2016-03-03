@@ -39,6 +39,7 @@ TEST_GROUP(LedDriver)
  
   void setup()
   {
+    LedDriver_Create(&virtualLeds);
   }
 
   void teardown() 
@@ -51,4 +52,78 @@ TEST(LedDriver, LedsAreOffAfterCreate)
   virtualLeds = 0xffff;
   LedDriver_Create(&virtualLeds);
   LONGS_EQUAL(0, virtualLeds);
+}
+
+TEST(LedDriver, TurnOnLedOne)
+{
+  LedDriver_TurnOn(1);
+  LONGS_EQUAL(1, virtualLeds);
+}
+
+TEST(LedDriver, TurnOnLed6)
+{
+  LedDriver_TurnOn(6);
+  LONGS_EQUAL(0x20, virtualLeds);
+}
+
+TEST(LedDriver, TurnOffLedOne)
+{
+  LedDriver_TurnOn(1);
+  LedDriver_TurnOff(1);
+  LONGS_EQUAL(0, virtualLeds);
+}
+
+TEST(LedDriver, TurnOffLed6)
+{
+  LedDriver_TurnOn(6);
+  LedDriver_TurnOff(6);
+  LONGS_EQUAL(0, virtualLeds);
+}
+
+TEST(LedDriver, TurnOn1Off6)
+{
+  LedDriver_TurnOn(1);
+  LedDriver_TurnOff(6);
+  LONGS_EQUAL(1, virtualLeds);
+}
+
+TEST(LedDriver, TurnOn8)
+{
+  LedDriver_TurnOn(8);
+  LONGS_EQUAL(0x80, virtualLeds);
+}
+
+TEST(LedDriver, CheckLowBound)
+{
+  LedDriver_TurnOn(0);
+  LedDriver_TurnOn(-1);
+  LedDriver_TurnOn(-10);
+  LedDriver_TurnOff(0);
+  LedDriver_TurnOff(-1);
+  LedDriver_TurnOff(-10);
+  LONGS_EQUAL(0, virtualLeds);
+}
+
+TEST(LedDriver, CheckHighBound)
+{
+  LedDriver_TurnOn(17);
+  LedDriver_TurnOn(20);
+  LedDriver_TurnOn(100);
+  LedDriver_TurnOff(17);
+  LedDriver_TurnOff(20);
+  LedDriver_TurnOff(100);
+  LONGS_EQUAL(0, virtualLeds);
+}
+
+TEST(LedDriver, TurnAllOn)
+{
+  LedDriver_TurnAllOn();
+  LONGS_EQUAL(0xffff, virtualLeds);
+}
+
+TEST(LedDriver, TurnOnMultiple)
+{
+  LedDriver_TurnOn(10);
+  LedDriver_TurnOn(12);
+  LONGS_EQUAL(0x0a00, virtualLeds);
 }
